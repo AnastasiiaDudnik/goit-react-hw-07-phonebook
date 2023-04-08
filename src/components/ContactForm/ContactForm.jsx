@@ -1,6 +1,5 @@
 import { Formik, Form, ErrorMessage } from 'formik';
 import { useDispatch, useSelector } from 'react-redux';
-import { nanoid } from 'nanoid';
 import { addContact } from 'redux/operations';
 import { getContacts } from 'redux/selectors';
 import { Field, Button } from './ContactForm.styled';
@@ -16,12 +15,11 @@ export const ContactForm = () => {
       initialValues={{ name: '', number: '' }}
       onSubmit={(values, actions) => {
         const data = {
-          createdAt: new Date().toISOString(),
           name: values.name,
           phone: values.number,
-          id: nanoid(),
         };
         dispatch(addContact(data));
+
         if (findContact(contacts, values)) {
           alert(`${values.name} is already in your contacts.`);
         }
