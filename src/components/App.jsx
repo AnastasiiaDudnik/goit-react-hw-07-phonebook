@@ -13,7 +13,7 @@ export const App = () => {
   const isLoading = useSelector(getIsLoading);
 
   useEffect(() => {
-    dispatch(fetchContacts);
+    dispatch(fetchContacts());
   }, [dispatch]);
 
   return (
